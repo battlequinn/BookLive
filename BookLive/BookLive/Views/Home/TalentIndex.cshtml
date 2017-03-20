@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Talent Page";
+}
+
+<div class="jumbotron">
+    <h1>
+        <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+            margin: auto;
+            -moz-border-radius: 60px;
+            border-radius: 100px;
+            padding: 6px;
+            box-shadow: 0px 0px 20px #888;" />
+        @User.Identity.GetUserName()
+    </h1>
+    <p class="lead"></p>
+</div>
+
+<div class="row">
+</div>

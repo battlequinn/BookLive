@@ -16,6 +16,7 @@ namespace BookLive.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public byte[] UserPhoto { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

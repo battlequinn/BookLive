@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.WebPages.Html;
 
 namespace BookLive.Models
 {
@@ -64,6 +65,8 @@ namespace BookLive.Models
 
     public class RegisterViewModel
     {
+        public ApplicationDbContext db = new ApplicationDbContext();
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +82,13 @@ namespace BookLive.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "UserRole")]
+        public string UserRole { get; set; }
+
+        [Display(Name = "UserPhoto")]
+        public byte[] UserPhoto { get; set; }
     }
 
     public class ResetPasswordViewModel
