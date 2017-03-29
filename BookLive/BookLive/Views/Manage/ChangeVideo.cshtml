@@ -1,0 +1,59 @@
+﻿@model BookLive.Models.ChangeVideoViewModel
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using BookLive.Models
+@{
+    byte[] video = null;
+    if (User.Identity.IsAuthenticated)
+    {
+        var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
+        var manager = new UserManager<ApplicationUser>(userStore);
+        var user = manager.FindById(User.Identity.GetUserId());
+
+        video = user.UserVideo;
+    }
+}
+@{
+    ViewBag.Title = "Change Video";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("ChangeVideo", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Change Video Form</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Current Clip", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @if (video != null)
+            {
+                <video width="320" height="240" controls>
+                    <source src="@Url.Action("UserVideos", "Home" )" type="video/mp4">
+                    <source src="@Url.Action("UserVideos", "Home" )" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+            }
+            else
+            {
+                <p>No clip added.</p>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserVideo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input type="file" name="UserVideo" id="fileUpload" accept=".mp4,.oog" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Change video" class="btn btn-default" />
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -3,7 +3,7 @@ namespace BookLive.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ResetRolesinsetup : DbMigration
+    public partial class Restartdatabase : DbMigration
     {
         public override void Up()
         {
@@ -36,6 +36,11 @@ namespace BookLive.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         UserPhoto = c.Binary(),
+                        UserVideo = c.Binary(),
+                        UserTitle = c.String(),
+                        Bio = c.String(),
+                        Location = c.String(),
+                        PriceRange = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

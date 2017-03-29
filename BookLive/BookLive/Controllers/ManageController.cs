@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BookLive.Models;
+using System.Data.Entity;
+using System.IO;
 
 namespace BookLive.Controllers
 {
@@ -15,9 +17,12 @@ namespace BookLive.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext db;
         public ManageController()
         {
+            db = new ApplicationDbContext();
+
+
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -333,7 +338,176 @@ namespace BookLive.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        //Get: /Manage/ChangeTitle
+        public ActionResult ChangeTitle()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangeTitle
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeTitle(ChangeTitleViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.UserTitle = model.Title;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        //Get: /Manage/ChangeBio
+        public ActionResult ChangeBio()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangeBio
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeBio(ChangeBioViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.Bio = model.Bio;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        //Get: /Manage/ChangeLocation
+        public ActionResult ChangeLocation()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangeLocation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeLocation(ChangeLocationViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.Location = model.Location;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        //Get: /Manage/ChangePriceRange
+        public ActionResult ChangePriceRange()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangePriceRange
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePriceRange(ChangePriceRangeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.PriceRange = model.PriceRange;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        //Get: /Manage/ChangeVideo
+        public ActionResult ChangeVideo()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangePriceRange
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeVideo([Bind(Exclude = "UserVideo")]ChangeVideoViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            byte[] videoData = null;
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase poVidFile = Request.Files["UserVideo"];
+
+                if (poVidFile != null)
+                {
+                    using (var binary = new BinaryReader(poVidFile.InputStream))
+                    {
+                        videoData = binary.ReadBytes(poVidFile.ContentLength);
+                    }
+                }
+            }
+
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.UserVideo = videoData;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        //Get: /Manage/ChangePhoto
+        public ActionResult ChangePhoto()
+        {
+            return View();
+        }
+
+        //POST: /Manage/ChangePriceRange
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePhoto([Bind(Exclude = "UserPhoto")]ChangePhotoViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            byte[] photoData = null;
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                if (poImgFile != null)
+                {
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        photoData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+                }
+            }
+
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            user.UserPhoto = photoData;
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(model);
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -385,5 +559,6 @@ namespace BookLive.Controllers
         }
 
 #endregion
+
     }
 }

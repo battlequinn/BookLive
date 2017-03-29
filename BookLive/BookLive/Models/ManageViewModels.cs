@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Web;
+using System.Collections.ObjectModel;
 
 namespace BookLive.Models
 {
@@ -82,5 +84,36 @@ namespace BookLive.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+    public class ChangeTitleViewModel
+    {
+        [Display(Name = "New Title")]
+        public string Title { get; set; }
+    }
+    public class ChangeBioViewModel
+    {
+
+        [Display(Name = "New Bio")]
+        public string Bio { get; set; }
+    }
+    public class ChangeLocationViewModel
+    {
+        [Display(Name = "New Location")]
+        public string Location { get; set; }
+    }
+    public class ChangePriceRangeViewModel
+    {
+        [Display(Name = "New Price Range")]
+        public string PriceRange { get; set; }
+    }
+    public class ChangePhotoViewModel
+    {
+        [Display(Name = "UserPhoto")]
+        public byte[] UserPhoto { get; set; }
+    }
+    public class ChangeVideoViewModel
+    {
+        [Display(Name = "UserVideo")]
+        public byte[] UserVideo { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace BookLive.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class GettinghardcodedadmintoworkaddedsecondawaitinAccountController : IMigrationMetadata
+    public sealed partial class Addedrequestmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(GettinghardcodedadmintoworkaddedsecondawaitinAccountController));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Addedrequestmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703162202079_Getting hard coded admin to work. added second await in AccountController"; }
+            get { return "201703291932416_Added request model"; }
         }
         
         string IMigrationMetadata.Source

@@ -29,17 +29,6 @@ namespace BookLive.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            //var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            //string[] roleNames = { "Planner", "Talent" };
-            //IdentityResult roleResult;
-            //foreach (var roleName in roleNames)
-            //{
-            //    if (!RoleManager.RoleExists(roleName))
-            //    {
-            //        roleResult = RoleManager.Create(new IdentityRole(roleName));
-            //    }
-            //}
         }
     }
 }

@@ -7,13 +7,13 @@ namespace BookLive.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ResetRolesinsetup : IMigrationMetadata
+    public sealed partial class AddedInitEmail : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ResetRolesinsetup));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedInitEmail));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703162137535_Reset Roles in setup"; }
+            get { return "201703282313212_Added InitEmail"; }
         }
         
         string IMigrationMetadata.Source

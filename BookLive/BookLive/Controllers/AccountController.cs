@@ -163,15 +163,23 @@ namespace BookLive.Controllers
                 {
                     HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
 
-                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    if(poImgFile != null)
                     {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                        using (var binary = new BinaryReader(poImgFile.InputStream))
+                        {
+                            imageData = binary.ReadBytes(poImgFile.ContentLength);
+                        }
                     }
                 }
 
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
                 user.UserPhoto = imageData;
+                user.UserTitle = "Title Ex: 'Musician', 'Bartender', 'Wedding Planner', 'Bar Manager'";
+                user.Bio = "Welcome to BookLive! Update your profile in the 'Settings' tab above!";
+                user.Location = "Unspecified";
+                user.PriceRange = "Unspecified";
+                user.UserVideo = null;
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

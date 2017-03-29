@@ -6,7 +6,6 @@
     var bio = string.Empty;
     var location = string.Empty;
     var priceRange = string.Empty;
-    byte[] video = null;
     if (User.Identity.IsAuthenticated)
     {
         var userStore = new UserStore<ApplicationUser>(new ApplicationDbContext());
@@ -17,11 +16,10 @@
         bio = user.Bio;
         location = user.Location;
         priceRange = user.PriceRange;
-        video = user.UserVideo;
     }
 }
 @{
-    ViewBag.Title = "Talent Page";
+    ViewBag.Title = "Planner Page";
 }
 
 <div class="jumbotron">
@@ -34,41 +32,25 @@
             box-shadow: 0px 0px 20px #888;" />
         @User.Identity.GetUserName()
     </h1>
-    <h2>Talent</h2>
+    <h2>Planner</h2>
     <p class="lead">@title</p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Bio</h2>
-        <p>@bio</p>
-    </div>
-
-    <div class="col-md-4">
-        <h2>Highlight Clip</h2>
-        @if (video != null)
-        {
-            <video width="320" height="240" controls>
-                <source src="@Url.Action("UserVideos", "Home" )" type="video/mp4">
-                <source src="@Url.Action("UserVideos", "Home" )" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
-        }
-        else
-        {
-            <p>No clip added.</p>
-        }
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
-        <div class="row">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Bio</h2>
+            <p>@bio</p>
+        </div>
+        <div class="col-md-4">
             <h2>Location</h2>
             <p>@location</p>
         </div>
-        <div class="row">
-            <h2>Price Range</h2>
-            <p>@priceRange</p>
+        <div class="col-md-4">
+            <div class="row">
+                <h2>Price Range</h2>
+                <p>@priceRange</p>
+            </div>
         </div>
     </div>
 </div>
-

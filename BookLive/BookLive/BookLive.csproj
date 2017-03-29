@@ -201,22 +201,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703162137535_Reset Roles in setup.cs" />
-    <Compile Include="Migrations\201703162137535_Reset Roles in setup.Designer.cs">
-      <DependentUpon>201703162137535_Reset Roles in setup.cs</DependentUpon>
+    <Compile Include="Migrations\201703240201281_Restart database.cs" />
+    <Compile Include="Migrations\201703240201281_Restart database.Designer.cs">
+      <DependentUpon>201703240201281_Restart database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703162202079_Getting hard coded admin to work. added second await in AccountController.cs" />
-    <Compile Include="Migrations\201703162202079_Getting hard coded admin to work. added second await in AccountController.Designer.cs">
-      <DependentUpon>201703162202079_Getting hard coded admin to work. added second await in AccountController.cs</DependentUpon>
+    <Compile Include="Migrations\201703282313212_Added InitEmail.cs" />
+    <Compile Include="Migrations\201703282313212_Added InitEmail.Designer.cs">
+      <DependentUpon>201703282313212_Added InitEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703172204078_Updated AccountViewModel.cs" />
-    <Compile Include="Migrations\201703172204078_Updated AccountViewModel.Designer.cs">
-      <DependentUpon>201703172204078_Updated AccountViewModel.cs</DependentUpon>
+    <Compile Include="Migrations\201703291932416_Added request model.cs" />
+    <Compile Include="Migrations\201703291932416_Added request model.Designer.cs">
+      <DependentUpon>201703291932416_Added request model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703292153342_Added Time Place Offer and Comment to Request.cs" />
+    <Compile Include="Migrations\201703292153342_Added Time Place Offer and Comment to Request.Designer.cs">
+      <DependentUpon>201703292153342_Added Time Place Offer and Comment to Request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703292217361_Removed foreign keys in request and added FromUserEmail.cs" />
+    <Compile Include="Migrations\201703292217361_Removed foreign keys in request and added FromUserEmail.Designer.cs">
+      <DependentUpon>201703292217361_Removed foreign keys in request and added FromUserEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -280,9 +290,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\TalentIndex.cshtml" />
+    <Content Include="Views\Manage\ChangeBio.cshtml" />
+    <Content Include="Views\Manage\ChangeTitle.cshtml" />
+    <Content Include="Views\Manage\ChangeLocation.cshtml" />
+    <Content Include="Views\Manage\ChangePriceRange.cshtml" />
+    <Content Include="Views\Manage\ChangeVideo.cshtml" />
+    <Content Include="Views\Manage\ChangePhoto.cshtml" />
+    <Content Include="Views\Home\PlannerIndex.cshtml" />
+    <Content Include="Views\Home\Browse.cshtml" />
+    <Content Include="Views\Home\TalentView.cshtml" />
+    <Content Include="Views\Home\InitEmail.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
+    <Content Include="Views\Home\AcceptOffer.cshtml" />
+    <Content Include="Views\Home\DeclineOffer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -293,14 +317,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703162137535_Reset Roles in setup.resx">
-      <DependentUpon>201703162137535_Reset Roles in setup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703240201281_Restart database.resx">
+      <DependentUpon>201703240201281_Restart database.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703162202079_Getting hard coded admin to work. added second await in AccountController.resx">
-      <DependentUpon>201703162202079_Getting hard coded admin to work. added second await in AccountController.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703282313212_Added InitEmail.resx">
+      <DependentUpon>201703282313212_Added InitEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703172204078_Updated AccountViewModel.resx">
-      <DependentUpon>201703172204078_Updated AccountViewModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703291932416_Added request model.resx">
+      <DependentUpon>201703291932416_Added request model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703292153342_Added Time Place Offer and Comment to Request.resx">
+      <DependentUpon>201703292153342_Added Time Place Offer and Comment to Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703292217361_Removed foreign keys in request and added FromUserEmail.resx">
+      <DependentUpon>201703292217361_Removed foreign keys in request and added FromUserEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace BookLive.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdatedAccountViewModel : IMigrationMetadata
+    public sealed partial class RemovedforeignkeysinrequestandaddedFromUserEmail : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedAccountViewModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedforeignkeysinrequestandaddedFromUserEmail));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703172204078_Updated AccountViewModel"; }
+            get { return "201703292217361_Removed foreign keys in request and added FromUserEmail"; }
         }
         
         string IMigrationMetadata.Source

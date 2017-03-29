@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BookLive.Models.Request>
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<div class="row">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<div class="row">
+    <table class="table table-bordered table-hover table-responsive">
+        @{
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Requestor
+                </th>
+                <th>
+                    Place
+                </th>
+                <th>
+                    Time
+                </th>
+                <th>
+                    Offer
+                </th>
+                <th>
+                    Comments
+                </th>
+                <th>
+                    Accept
+                </th>
+                <th>
+                    Decline
+                </th>
+            </tr>
+            foreach (var request in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Action("TalentPhotoSamples", "Home", new { userId = request.FromUserId } )" style="width:80px;height:80px; background: #FFFFFF;
+                            margin: auto;
+                            -moz-border-radius: 60px;
+                            border-radius: 100px;
+                            padding: 6px;
+                            box-shadow: 0px 0px 20px #888;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => request.FromUserEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => request.Place)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => request.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => request.Offer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => request.Comment)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Accept", "AcceptOffer", "Home")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Decline", "DeclineOffer", "Home")
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Web;
 
 namespace BookLive.Models
 {
@@ -14,9 +15,16 @@ namespace BookLive.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+
             return userIdentity;
         }
         public byte[] UserPhoto { get; set; }
+        public byte[] UserVideo { get; set; }
+        public string UserTitle { get; set; }
+        public string Bio { get; set; }
+        public string Location { get; set; }
+        public string PriceRange { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -30,5 +38,6 @@ namespace BookLive.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Request> Request { get; set; }
     }
 }
