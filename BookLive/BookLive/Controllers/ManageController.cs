@@ -436,7 +436,7 @@ namespace BookLive.Controllers
             return View();
         }
 
-        //POST: /Manage/ChangePriceRange
+        //POST: /Manage/ChangeVideo
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

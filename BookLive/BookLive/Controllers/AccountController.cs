@@ -172,7 +172,7 @@ namespace BookLive.Controllers
                     }
                 }
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser{ UserName = model.Email, Email = model.Email };
 
                 user.UserPhoto = imageData;
                 user.UserTitle = "Title Ex: 'Musician', 'Bartender', 'Wedding Planner', 'Bar Manager'";
